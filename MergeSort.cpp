@@ -30,25 +30,25 @@ void Mixed(int *&A, int lBegin, int rBegin, int rEnd)
     }
 }
 
-void MergeSort(int *&A, int Bg, int Ed)
+void MergeSort(int *&A, int N)
 {
-    int i=Bg, r=0, f1, f2;
-    while (i<Ed)
+    int i=0, r=0, f1, f2;
+    while (i<N-1)
     {
         f1=i;
         while (A[i]<=A[i+1]) i++;
         r++;
-        if (i<Ed)
+        if (i<N-1)
         {
             f2=++i;
-            cout << endl << f1 << " " << f2 << endl;
+            //cout << endl << f1 << " " << f2 << endl;
             while (A[i]<=A[i+1]) i++;
             r++;
             Mixed(A,f1,f2,i);
         }
         i++;
     }
-    if (r>=2) MergeSort(A,Bg,Ed);
+    if (r>=2) MergeSort(A,N);
 }
 
 int main()
@@ -59,7 +59,7 @@ int main()
     int *A= new int [N];
     Input(A,N);
 
-    MergeSort(A,0,N-1);
+    MergeSort(A,N);
     Output(A,N);
     return 0;
 }
